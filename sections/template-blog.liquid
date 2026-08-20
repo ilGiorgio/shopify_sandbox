@@ -8,16 +8,16 @@
       {% for article in blog.articles %}
         {% case forloop.index %}
           {% when 1 %}
-            {% render "blog-post-primary": article: article %}
+            {% render "blog-post-primary", article: article %}
           {% else %}
-            {% render "blog-post-secondary": article: article %}
+            {% render "blog-post-secondary", article: article %}
         {% endcase %}
       {% endfor %}
     </div>
     {% # INFO: Mobile layout %}
     <div class="grid md:hidden grid-cols-1 w-full p-8 gap-2">
       {% for article in blog.articles %}
-        {% render "blog-post-secondary": article: article %}
+        {% render "blog-post-secondary", article: article %}
       {% endfor %}
     </div>
 
@@ -50,3 +50,19 @@
   }
 {% endschema %}
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render "blog-post-primary": article: article %}'
+  to: '{% render "blog-post-primary", article: article %}'
+  position: 458..508
+- from: '{% render "blog-post-secondary": article: article %}'
+  to: '{% render "blog-post-secondary", article: article %}'
+  position: 542..594
+- from: '{% render "blog-post-secondary": article: article %}'
+  to: '{% render "blog-post-secondary", article: article %}'
+  position: 790..842
+{% endcomment %}
